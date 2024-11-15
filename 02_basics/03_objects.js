@@ -1,5 +1,5 @@
 // singleton
-// Object.create  //this method is used in singleton
+// Object.create  // to create sinbleton object
 
 // object literals
 
