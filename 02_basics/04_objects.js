@@ -48,4 +48,33 @@ const user = [
     }
 ]
 
-console.log(user[0].email)
+// console.log(user[0].email)
+
+console.log(tinderUser);
+
+console.log(Object.keys(tinderUser));  // returns array of keys
+console.log(Object.entries(tinderUser));  // returns array of arrays of all entries in the object
+
+console.log(tinderUser.hasOwnProperty('loggedIn')); // check wether it is own property 
+
+const course = {
+    courseName: 'js',
+    price: "999",
+    courseInstructor: "hitesh",
+};
+
+// course.courseInstructor
+// destructuring assignment
+const {courseInstructor} = course; // we can use courseInstructor to get its value
+const {courseInstructor: instructor}  = course; // we are can use instructor to get courseInstructor's value 
+console.log(courseInstructor);
+
+
+// API // JSON
+
+// {
+//     "name": "Sourabh",
+//     "courseName": "js",
+//     "price": "free"
+// };
+
