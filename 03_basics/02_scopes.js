@@ -8,4 +8,15 @@ if (true) {
 // console.log(b);   //will give error
 console.log(c);
 
+// +++++++++++++++++++ interesting +++++++++++++++++++
+
+addone(5);
+function addone(num){
+    return num + 1;
+}
+
+addtwo(5); // can't use this before the function declaration.
+const addtwo = function(num){
+    return num2 + 2
+}
 
