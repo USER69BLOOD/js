@@ -8,9 +8,13 @@ const resultParas = document.querySelector('.resultParas');
 
 let randomNumber = Math.floor((Math.random() * 100)) + 1;
 
+let para = document.createElement('p');
+
+console.log(randomNumber);
+
 let playGame = true;
 
-let numGuesses = 0;
+let numGuesses = 1;
 
 if(playGame){
     form.addEventListener('submit', run);
@@ -20,10 +24,8 @@ function run(e){
     e.preventDefault();
 
     console.log(randomNumber);
-    let guess = guessField.value;
+    let guess = parseInt(guessField.value);
     parseInt(validateGuess(guess));
-
-
 }
 
 function validateGuess(guess){
@@ -37,11 +39,14 @@ function validateGuess(guess){
     }else if(guess > 100){
         alert('please enter a number less than 100.');
     }else{
-        updateInfo(guess);
-        if (numGuesses > 10){
+        
+        if (numGuesses === 10){
+            updateInfo(guess);
+            checkGuess(guess);
             displayMessages(`Game Over, Random Number was ${randomNumber}`)
             endGame();
         }else{
+            updateInfo(guess);
             checkGuess(guess);
         }
     }
@@ -74,9 +79,28 @@ function displayMessages(msg){
 }
 
 function endGame(){
-    
+    guessField.value = '';
+    guessField.setAttribute('disabled', '');
+    para.classList.add('button');
+    para.innerHTML = '<h1 id="newGame">New Game</h1>';
+    resultParas.appendChild(para);
+
+    playGame = false;
+    newGame();
 }
 
 function newGame(){
-    //
+    const newGameButton = document.querySelector('#newGame');
+    newGameButton.addEventListener('click', (e) => {
+        randomNumber = Math.floor((Math.random() * 100)) + 1;
+        guessField.value = '';
+        guessField.removeAttribute('disabled');
+        resultParas.removeChild(para);
+        numGuesses = 1;
+        lastResult.innerHTML = 10;
+
+        guesses.innerHTML = '';
+
+        playGame = true;
+    });
 }
