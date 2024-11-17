@@ -5,19 +5,21 @@ console.log(`The number you are want to guess is ${num}`);
 
 var remaining = 10;
 
+const submit = document.querySelector('#subt');
+
 let prevGuess = [];
 
 
 form.addEventListener('submit', (e) => {
     e.preverDefault();
 
-    const guess = parseInt(document.querySelector('.guessField').value);
+    const guess = parseInt(document.querySelector('#guessField').value);
 
     const guesses = document.querySelector('.guesses');
 
     const lastResult = document.querySelector('.lastResult');
 
-    const lowOrHi = document.querySelector('lowOrHi');
+    const lowOrHi = document.querySelector('.lowOrHi');
 
 
 
@@ -45,3 +47,4 @@ form.addEventListener('submit', (e) => {
     }
 
 })
+
