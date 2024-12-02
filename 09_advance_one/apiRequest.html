@@ -8,15 +8,30 @@
 <body style="background-color: #212121; color: #fff;">
     
     0	UNSENT	Client has been created. open() not called yet.
+    <br>
     1	OPENED	open() has been called.
-    2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    <br>
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available. 
+    <br>
     3	LOADING	Downloading; responseText holds partial data.
+    <br>
     4	DONE	The operation is complete.
+    <br>
 </body>
 <script>
-    const requestUrl = 'https://randomuser.me/api/';  // Replace with your API URL
+    const requestUrl = 'https://api.github.com/users/user69x69';  // Replace with your API URL
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', requestUrl);
-    console.log(xhr.readyState);
+    xhr.open('GET', requestUrl); // (methods, url);
+    // console.log(xhr.readyState); // will only print the current state
+    xhr.onreadystatechange = function() {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) { // if state is DONE
+            const data = JSON.parse(this.responseText);
+            console.log(data.followers);
+
+        }
+    } // every time state changes the function will get called
+    xhr.send();
+
 </script>
 </html>
